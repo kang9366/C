@@ -15,3 +15,7 @@ int main() {
 int add(int a, int b) {
 	return a + b;
 }
+
+int multifly(int a, int b){
+	return a * b;
+}
