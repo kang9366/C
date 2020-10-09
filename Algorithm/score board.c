@@ -16,30 +16,30 @@ struct student{
 typedef struct student STUDENT;
 STUDENT s[10];
 
-//µ¥ÀÌÅÍ ÀÔ·Â¹Ş±â
+//ë°ì´í„° ì…ë ¥ë°›ê¸°
 int input_data(void) {
-	printf("ÀÎ¿ø ¼ö : ");
+	printf("ì¸ì› ìˆ˜ : ");
 	scanf("%d", &num);
 	for (int i = 0; i < num; i++) {
 		printf("\n[%d]\n", i+1);
-		printf("1.ÀÌ¸§ : ");
+		printf("1.ì´ë¦„ : ");
 		scanf("%s", &s[i].name[i]);
-		printf("2.±¹¾î : ");
+		printf("2.êµ­ì–´ : ");
 		scanf("%d", &s[i].korean[i]);
 		if (s[i].korean[i] > 100) {
-			printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+			printf("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 			break;
 		}
-		printf("3.¿µ¾î : ");
+		printf("3.ì˜ì–´ : ");
 		scanf("%d", &s[i].english[i]);
 		if (s[i].english[i] > 100) {
-			printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+			printf("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 			break;
 		}
-		printf("4.¼öÇĞ : ");
+		printf("4.ìˆ˜í•™ : ");
 		scanf("%d", &s[i].math[i]);
 		if (s[i].math[i] > 100) {
-			printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+			printf("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 			break;
 		}
 	}
@@ -47,15 +47,15 @@ int input_data(void) {
 }
 
 int calculate_data(void) {
-	//ÃÑÁ¡ °è»ê
+	//ì´ì  ê³„ì‚°
 	for (int i = 0; i < num; i++){
 		s[i].sum[i] = s[i].korean[i] + s[i].english[i] + s[i].math[i];
 	}
-	//Æò±Õ °è»ê
+	//í‰ê·  ê³„ì‚°
 	for (int i = 0; i < num; i++){
 		s[i].average[i] = (double)s[i].sum[i] / 3;
 	}
-	//°ú¸ñº° Æò±Õ °è»ê
+	//ê³¼ëª©ë³„ í‰ê·  ê³„ì‚°
 	for (int i = 0; i < num; i++){
 		kor_sum += s[i].korean[i];
 		eng_sum += s[i].english[i];
@@ -64,7 +64,7 @@ int calculate_data(void) {
 	kor_avg = (double)kor_sum / num;
 	eng_avg = (double)eng_sum / num;
 	math_avg = (double)math_sum / num;
-	//ÇĞÁ¡ °è»ê
+	//í•™ì  ê³„ì‚°
 	for (int i = 0; i < num; i++){
 		if (s[i].average[i] >= 90 && s[i].average[i] <= 100) {
 			s[i].score[i] = 'A';
@@ -84,7 +84,7 @@ int calculate_data(void) {
 }
 
 int table(void) {
-	printf("\n--------------------------------------------------------------------------------\n   ¹øÈ£      ÀÌ¸§      ±¹¾î      ¿µ¾î      ¼öÇĞ      ÃÑÁ¡      Æò±Õ      ÇĞÁ¡");
+	printf("\n--------------------------------------------------------------------------------\n   ë²ˆí˜¸      ì´ë¦„      êµ­ì–´      ì˜ì–´      ìˆ˜í•™      ì´ì       í‰ê·       í•™ì ");
 	for (int i = 0; i < num; i++){
 		cnt++;
 		printf("\n--------------------------------------------------------------------------------\n    %d       %s      %d        %d        %d       %d      %g      %c",	
@@ -95,22 +95,22 @@ int table(void) {
 }
 
 int graph(void) {
-	//±¹¾î Æò±ÕÁ¡¼ö ±×·¡ÇÁ
-	printf("1) ±¹¾î Æò±Õ Á¡¼ö : ");
+	//êµ­ì–´ í‰ê· ì ìˆ˜ ê·¸ë˜í”„
+	printf("1) êµ­ì–´ í‰ê·  ì ìˆ˜ : ");
 	for (int i = 0; i < (int)(kor_avg / 10); i++) {
-		printf("¡á");
+		printf("â– ");
 	}
 	printf("(%g)\n", kor_avg);
-	//¿µ¾î Æò±ÕÁ¡¼ö ±×·¡ÇÁ
-	printf("2) ¿µ¾î Æò±Õ Á¡¼ö : ");
+	//ì˜ì–´ í‰ê· ì ìˆ˜ ê·¸ë˜í”„
+	printf("2) ì˜ì–´ í‰ê·  ì ìˆ˜ : ");
 	for (int i = 0; i < (int)(eng_avg / 10); i++) {
-		printf("¡á");
+		printf("â– ");
 	}
 	printf(" (%g)\n", eng_avg);
-	//¼öÇĞ Æò±ÕÁ¡¼ö ±×·¡ÇÁ
-	printf("3) ¼öÇĞ Æò±Õ Á¡¼ö : ");
+	//ìˆ˜í•™ í‰ê· ì ìˆ˜ ê·¸ë˜í”„
+	printf("3) ìˆ˜í•™ í‰ê·  ì ìˆ˜ : ");
 	for (int i = 0; i < (int)(math_avg / 10); i++) {
-		printf("¡á");
+		printf("â– ");
 	}
 	printf(" (%g)\n", math_avg);
 
